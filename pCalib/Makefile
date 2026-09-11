@@ -1,37 +1,30 @@
-# Compiler
-CC = g++ 
+CXX = g++
 
-# Compiler flags
-CFLAGS = -Wall -I/usr/include/opencv4
-#Load Lib Path
-LDLIBPATH = -I/usr/include/opencv4 
+CXXFLAGS = -Wall -O2 -I/usr/include/opencv4
 
-#Load Libraries
-LDLIBS = -I/usr/include/opencv4 -ljpeg -lm -lopencv_core -lopencv_imgproc -lopencv_calib3d -lopencv_highgui -lopencv_imgcodecs -lopencv_calib3d -lopencv_features2d -llapacke -llapack -lblas
+LDLIBS = -lopencv_core \
+         -lopencv_imgproc \
+         -lopencv_calib3d \
+         -lopencv_highgui \
+         -lopencv_imgcodecs
 
-# Source files
-SRCS =  pRectify.cc
+TARGETS = pCalib pPose pRectify
 
+.PHONY: all clean run-calib run-pose run-rectify
 
-# Object files (replace .cc with .o)
-OBJS = $(SRCS:.cc=.o)
+all: $(TARGETS)
 
-# Output executable
-TARGET =  pRectify
+%: %.cc
+	$(CXX) $(CXXFLAGS) $< -o $@ $(LDLIBS)
 
-#Rule to build the final executable
-$(TARGET): $(OBJS)
-	$(CC) $(CFLAGS) -o $(TARGET) $(OBJS) $(LDLIBS)
+run-calib: pCalib
+	./pCalib
 
-# Rule to build object files
-%.o: %.cc
-	$(CC) $(CFLAGS) -c $< -o $@
+run-pose: pPose
+	./pPose
 
-# Clean rule
+run-rectify: pRectify
+	./pRectify
+
 clean:
-	rm -f $(OBJS) $(TARGET)
-
-# Run the program
-run: $(TARGET)
-	./$(TARGET)
-
+	rm -f $(TARGETS)

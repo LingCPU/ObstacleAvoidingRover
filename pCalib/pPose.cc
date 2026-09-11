@@ -29,8 +29,8 @@ int main() {
     // Read images for calibration
     std::vector<cv::String> fileNamesLeft;
     std::vector<cv::String> fileNamesRight;
-    cv::glob("nvcamtest_6285_s00_*.jpg", fileNamesLeft);
-    cv::glob("nvcamtest_6407_s01_*.jpg", fileNamesRight); 
+    cv::glob("../calibrationPhotos/nvcamtest_6285_s00_*.jpg", fileNamesLeft);
+    cv::glob("../calibrationPhotos/nvcamtest_6407_s01_*.jpg", fileNamesRight); 
 
     printf("find image  points on line 33 \n");
 // find  image points

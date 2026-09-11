@@ -4,7 +4,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
-#include "cuda_include.h"
 #include <limits.h>
  
  __global__ void stereoKernel(unsigned char* left, unsigned char* right,

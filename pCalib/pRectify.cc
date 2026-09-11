@@ -8,8 +8,8 @@ using namespace std;
 int main() {
     
 // Load left and right stereo images
-    Mat leftImageColor  = imread("nvcamtest_6285_s00_00000.jpg");
-    Mat rightImageColor = imread("nvcamtest_6407_s01_00000.jpg");
+    Mat leftImageColor  = imread("../calibrationPhotos/nvcamtest_6285_s00_00000.jpg");
+    Mat rightImageColor = imread("../calibrationPhotos/nvcamtest_6407_s01_00000.jpg");
 
      cv::Mat leftImage,rightImage;
      cv::cvtColor(leftImageColor,leftImage, cv::COLOR_BGR2GRAY);
@@ -61,7 +61,7 @@ Mat T = (Mat_<double>(3,1) << -59.90256900017663,
     remap(leftImage, rectifiedLeft, map1x, map1y, INTER_LINEAR);
     remap(rightImage, rectifiedRight, map2x, map2y, INTER_LINEAR);
 
-    FileStorage fs("lookupTables.xml",FileStorage::WRITE);   
+    FileStorage fs("../lookupTables.xml",FileStorage::WRITE);   
     fs << "Map1x" << map1x; 
     fs << "Map1y" << map1y;
     fs << "Map2x" << map2x; 
@@ -74,8 +74,8 @@ Mat T = (Mat_<double>(3,1) << -59.90256900017663,
 //    hconcat(rectifiedLeft,rectifiedRight,combined);
 
    // Display original images
-    imwrite("leftRectified.jpg", rectifiedLeft); 
-    imwrite("rightRectified.jpg", rectifiedRight); 
+    imwrite("../Calibration Photos/leftRectified.jpg", rectifiedLeft); 
+    imwrite("../Calibration Photos/rightRectified.jpg", rectifiedRight); 
     waitKey(0);
     return 0;
 }

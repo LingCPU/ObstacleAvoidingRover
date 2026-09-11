@@ -25,7 +25,7 @@ int main() {
     // Read images for calibration
     std::vector<cv::String> filenames;
  //   cv::glob("nvcamtest_6407_s01_*.jpg", filenames); 
-  cv::glob("nvcamtest_6285_s00_*.jpg", filenames); 
+  cv::glob("../calibrationPhotos/nvcamtest_6285_s00_*.jpg", filenames); 
 
     for (size_t i = 0; i < filenames.size(); i++) {
         cv::Mat img = cv::imread(filenames[i]);

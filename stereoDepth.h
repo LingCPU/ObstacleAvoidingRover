@@ -5,7 +5,6 @@
 #include <opencv2/imgproc.hpp>
 #include <opencv2/highgui.hpp>
 #include <vector>
-#include "cuda_include.h"
  
  using namespace cv;
  using namespace std;
